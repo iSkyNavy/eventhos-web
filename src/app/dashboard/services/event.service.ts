@@ -57,6 +57,11 @@ export class EventService {
     let query = `?event-identifier=${eventIdentifier}&access-key=${accessKey}&contract-id=${contractId}`; 
     return this.http.post(this.httpRoute + '/send/contract' + query, {contractDetailId, receivedEventId}) 
   }
+
+  async handleRetryAllErrors() {
+    return this.http
+      .post(this.httpRoute + `/execute-all-errors`, {});
+  }
 }
 
 export interface EventUpdateDto {

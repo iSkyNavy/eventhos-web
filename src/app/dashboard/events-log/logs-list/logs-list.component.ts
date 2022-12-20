@@ -64,6 +64,8 @@ export class LogsListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   systemIdChange$: Subscription;
   dateSubscription$: Subscription;
+  isLoadingResultsRetried = false;
+
 
   constructor(
     private eventsLogsService: EventsLogsService,
@@ -199,5 +201,14 @@ export class LogsListComponent implements OnInit, OnDestroy, AfterViewInit {
         receivedEventId: receivedEvent,
       },
     });
+  }
+
+  async retriedAllErrors () {
+    console.log("get all errors")
+    this.isLoadingResultsRetried = true
+    await this.eventsLogsService.handleRetryAllErrors().then(async () => window.location.reload()).finally( () =>
+      this.isLoadingResultsRetried = false
+    )
+
   }
 }

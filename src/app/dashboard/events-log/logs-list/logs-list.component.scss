@@ -38,3 +38,23 @@ h3 {
   gap: 1rem;
   margin-bottom: 1rem;
 }
+
+.retry-container {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  &-button{
+    background-color: transparent;
+    color: green;
+    padding: 10px;
+    margin: 2px 0px 12px;
+    border: 1px solid;
+    border-radius: 6px;
+    cursor: pointer;
+    &:hover {
+      background-color: green;
+      color: black;
+      border: 1px solid transparent;
+    }
+  }
+}

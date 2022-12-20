@@ -31,11 +31,13 @@
     <mat-hint>Select a date range</mat-hint>
   </mat-form-field>
 </form>
+<div class="retry-container">
+  <button  (click)="retriedAllErrors()" class="retry-container-button">Retry all errors</button>
+</div>
 <div class="mat-elevation-z8">
   <div class="loading-shade" *ngIf="isLoadingResults">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
   </div>
-
   <table
     mat-table
     [dataSource]="receivedEvents"
@@ -44,6 +46,7 @@
     matSortActive="id"
     matSortDisableClear
     matSortDirection="desc"
+    *ngIf="isLoadingResultsRetried == false"
   >
     <ng-container matColumnDef="id">
       <th mat-sort-header mat-header-cell *matHeaderCellDef>ID</th>
